@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Cart {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'styles/checkout.css' %}"> 
+{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+
+{% if cart_products %}
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_products %}
+            <tr>
+                <td>{{ item.Product_ID.Title }}</td>
+                <td>{{ item.Quantity }}</td>
+                <td>৳{{ item.Product_ID.Price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Total Price: </strong>৳{{ total_price }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <h3>Select Payment Method</h3>
+        <select name="payment_method" required>
+            <option value="">--Select Payment Method--</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="debit_card">Debit Card</option>
+            <option value="paypal">PayPal</option>
+        </select>
+    
+        <h3>Confirm Order</h3>
+        <p>Total Price: {{ total_price }}</p>
+        <p>Address: {{ customer.Address }}</p>
+        <a href="{% url 'payment_success' %}">  
+            <button type="submit">Confirm and Proceed to Payment</button>
+        </a>
+    </form>
+    
+{% else %}
+    <p>No items in your cart to checkout.</p>
+{% endif %}
+{% endblock %}

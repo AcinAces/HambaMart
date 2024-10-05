@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Delete Product {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'styles/delete_product.css' %}"> 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Delete Product</h1>
+
+    <!-- Search Form -->
+    <form method="GET" action="{% url 'product_delete' %}" class="search-form">
+        <label for="product_id">Search Product by ID:</label>
+        <input type="text" name="product_id" id="product_id" placeholder="Enter Product ID" value="{{ request.GET.product_id }}" required>
+        <button type="submit" class="btn">Search</button>
+    </form>
+
+    <!-- Product Details and Delete Form -->
+    {% if product %}
+        <div class="product-details">
+            <h2>Product Details</h2>
+            <p><strong>Title:</strong> {{ product.Title }}</p>
+            <p><strong>Description:</strong> {{ product.Description }}</p>
+            <p><strong>Stock:</strong> {{ product.Stock }}</p>
+            <p><strong>Price:</strong> {{ product.Price }}</p>
+            <p><strong>Image:</strong> <img src="{{ product.product_img }}" alt="Product Image" height="100"></p>
+
+            <!-- Delete Form -->
+            <form method="POST" action="{% url 'product_delete' %}" class="delete-form">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{ product.Product_ID }}">
+                <button type="submit" name="delete" class="btn delete-btn">Delete Product</button>
+            </form>
+        </div>
+    {% elif request.GET.product_id %}
+        <p class="no-product">No product found with that ID.</p>
+    {% endif %}
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

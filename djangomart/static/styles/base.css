@@ -1,0 +1,160 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+
+
+.custom-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.custom-header .logo-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.custom-header .logo img {
+    height: 60px;
+}
+
+
+.custom-header .search-bar {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+    max-width: 688px; 
+    margin: 0 auto; 
+}
+
+
+.custom-header .search-bar form {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    height: 45px; 
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.custom-header .search-bar input {
+    flex: 1; 
+    padding: 0 10px; 
+    border: none;
+    font-size: 16px;
+    outline: none;
+    height: 100%;
+    border-radius: 3px 0 0 3px;
+}
+
+
+.custom-header .search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 15px;
+    height: 100%;
+    border-radius: 0 3px 3px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.custom-header .search-bar button img {
+    height: 24px;
+    width: 24px;
+}
+
+
+.custom-header .user-options {
+    display: flex;
+    align-items: center;
+}
+
+.custom-header .auth-buttons button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.custom-header .user-greeting {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.custom-header .user-greeting .dropdown-toggle {
+    cursor: pointer;
+}
+
+
+.custom-header .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.custom-header .dropdown-menu a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.custom-header .dropdown-menu a:hover {
+    background-color: #f1f1f1;
+}
+
+.custom-header .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+
+.custom-header .cart-icon img {
+    height: 30px;
+}
+
+.custom-header .logo, .search-bar, .user-options {
+    margin: 0 20px; 
+}
+
+main {
+    flex: 1;
+    padding-top: 170px;
+    padding-bottom: 50px; 
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: auto;
+}

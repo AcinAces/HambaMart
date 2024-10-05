@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign Up {% endblock %}
+
+
+{% block extra_css %} <link rel="stylesheet" href="{% static 'styles/signup.css' %}"> {% endblock %}
+
+
+{% block content %}<div class="signup-container">
+  <h1>Get Started Now</h1>
+  
+  <form method="POST" class="signup-form">
+      {% csrf_token %}
+      {{ form.as_p }} <!-- This will render all form fields including validation messages -->
+      
+      <!-- Signup Button -->
+      <button type="submit" class="signup-btn">Signup</button>
+  </form>
+
+  <!-- Sign In Link -->
+  <div class="signin-link">
+      <p>Have an account? <a href="{% url 'login' %}">Sign In</a></p>
+  </div>
+</div>
+{% endblock %}
